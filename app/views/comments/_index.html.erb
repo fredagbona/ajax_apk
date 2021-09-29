@@ -1,0 +1,17 @@
+<ul>
+  <% comments.each do |comment| %>
+    <% if comment.id.present? %>
+      <li>
+      <!-- Addendum -->
+        <div class="comment-content" id ="this_comment_<%= comment.id %>"></div>
+      <!-- Jusque là -->
+        <p><%= comment.content %></p>
+        <!-- Addendum -->
+        <p><%= link_to "Modifier le commentaire", edit_blog_comment_path(blog, comment), remote: true %></p>
+        <!-- Jusque là -->
+        <p> <%= link_to "Supprimer le commentaire", blog_comment_path(comment.blog_id, comment.id), method: :delete, remote: true,
+                                        data: { confirm: "Voulez-vous vraiment supprimer cela?"} %> </p>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

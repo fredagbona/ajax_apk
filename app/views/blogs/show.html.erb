@@ -1,0 +1,17 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="blog-text">
+    <p><strong>Title</strong>：<%= @blog.title %></p>
+    <p><strong>Contenu</strong>：<%= @blog.content %></p>
+  </div>
+  <p>Liste des commentaires (les contenus d'ici sont importants)</p>
+  <!-- Obtenez l'ID HTML de cette zone de commentaires et ne mettez à jour que cette div-->
+  <div id="comments_area">
+    <!-- Rendu pour afficher une liste des commentaires publiés sur la page des détails du blog -->
+    <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
+  </div>
+  <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+  <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
+  <%= link_to 'Modifier', edit_blog_path(@blog) %> |
+  <%= link_to 'Retour', blogs_path %>
+</div>
