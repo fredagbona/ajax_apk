@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :users
+  get 'relationships/create'
+  get 'relationships/destroy'
+  resources :users, only: [:index]
+  resources :relationships, only: [:create, :destroy]
   get 'comments/create'
   resources :blogs do
     resources :comments
